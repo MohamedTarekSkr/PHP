@@ -1,10 +1,10 @@
 <?php
-require_once('./layouts/header.php');
-require_once('./logic/products.php');
-require_once('./logic/categories.php');
+define('BASE_PATH', './');
+require_once(BASE_PATH . 'layouts/header.php');
+require_once(BASE_PATH . 'logic/products.php');
+require_once(BASE_PATH . 'logic/categories.php');
 $products = getProducts();
 $categories = getCategories();
-var_dump($products)
 ?>
 <!-- Carousel Start -->
 <div class="container-fluid mb-3">
@@ -134,7 +134,7 @@ var_dump($products)
             <a class="text-decoration-none" href="products.php?category_id=<?= $category['id'] ?>">
                 <div class="cat-item d-flex align-items-center mb-4">
                     <div class="overflow-hidden" style="width: 100px; height: 100px">
-                        <img class="img-fluid" src="<?= $category['image'] ?>" alt="" />
+                        <img class="img-fluid" src="<?= $category['image_url'] ?>" alt="" />
                     </div>
                     <div class="flex-fill pl-3">
                         <h6><?= $category['name'] ?></h6>
@@ -162,7 +162,7 @@ var_dump($products)
         <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
             <div class="product-item bg-light mb-4">
                 <div class="product-img position-relative overflow-hidden">
-                    <img class="img-fluid w-100" src="<?= $product['image'] ?>" alt="" />
+                    <img class="img-fluid w-100" src="<?= $product['image_url'] ?>" alt="" />
                     <div class="product-action">
                         <a class="btn btn-outline-dark btn-square" href="#"
                             onclick="addSingleProductToCart({id:1,name:'product-1',price:123,image:'/img/product-1.jpg'})"><i
@@ -231,7 +231,7 @@ var_dump($products)
         <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
             <div class="product-item bg-light mb-4">
                 <div class="product-img position-relative overflow-hidden">
-                    <img class="img-fluid w-100" src="<?= $recent['image'] ?>" alt="" />
+                    <img class="img-fluid w-100" src="<?= $recent['image_url'] ?>" alt="" />
                     <div class="product-action">
                         <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
                         <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
@@ -294,4 +294,4 @@ var_dump($products)
 </div>
 <!-- Vendor End -->
 
-<?php require('./layouts/footer.php'); ?>
+<?php require(BASE_PATH . 'layouts/footer.php'); ?>
